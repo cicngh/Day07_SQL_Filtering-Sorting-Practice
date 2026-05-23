@@ -1,0 +1,11 @@
+{
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+               {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Day07_practice",
+            "database": "${workspaceFolder:Day07_SQL_Filtering & Sorting Practice}/Day07_practice.db"
+        }
+    ]
+}

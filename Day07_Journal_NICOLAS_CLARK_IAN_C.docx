@@ -1,0 +1,20 @@
+# Activity Journal: SQL Filtering & Sorting Practice
+
+### 1. How comfortable are you now with combining AND, OR, and NOT in a single WHERE clause? Which combination was the trickiest?
+I feel much more confident using these logical operators together. The trickiest part is definitely managing operator precedence, especially when mixing `AND` and `OR`. Without proper parentheses, the query might return unexpected results because `AND` is usually processed before `OR`. Grouping conditions within parentheses ensures the logic matches the intended business rule.
+
+### 2. Compare BETWEEN, IN, and LIKE — which one feels most useful for hospital data, and why?
+While all three are essential, `LIKE` feels particularly useful for hospital data. Medical diagnoses and doctor names can be complex or varied; being able to search for keywords like "Cancer" or "Heart" within a text field using wildcards (`%`) is powerful for research and reporting where exact matches might be missed.
+
+### 3. Why does ORDER BY almost always come BEFORE LIMIT in a query? What happens if the order is wrong?
+`ORDER BY` must come before `LIMIT` because the database needs to sort the entire dataset first to determine which specific records are the "top" or "bottom" ones. If you were to limit first, you would just be sorting a random subset of the data. In SQL syntax, putting `LIMIT` before `ORDER BY` results in a syntax error because the database engine expects the sorting logic to be finalized before it truncates the results.
+
+### 4. If a doctor asked you for the “5 most expensive cases this month”, exactly which clauses would you use? Walk through your thinking.
+I would use the following logic:
+- **WHERE**: To filter for the specific month (e.g., `admission_date BETWEEN '2025-05-01' AND '2025-05-31'`).
+- **ORDER BY**: To sort the `billing_amount` in descending order (`DESC`) so the most expensive cases appear at the top.
+- **LIMIT**: To restrict the output to exactly `5` records.
+This ensures I only look at relevant dates, rank them by cost, and pick the top few.
+
+### 5. What is one real-world hospital question you would want to answer with SQL filtering/sorting in a future job?
+I would want to answer: "Which departments have the highest average length of stay for patients over 70?" Filtering by age and department, then sorting by stay duration (or calculating an average), would help identify which areas of the hospital might need more specialized geriatric resources or more efficient discharge planning.
